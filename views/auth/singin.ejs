@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="signin">
+    <div class="container">
+        <h1>Sign In</h1>
+        <form id="signin-form" action="/signin" method="post">
+            <input type="email" id="email" placeholder="Email" name="email">
+            <input type="password" id="password" placeholder="Password" name="password">
+            <button type="submit">Sign In</button>
+        </form>
+        <div class="links">
+            <a href="/signup">Sign Up</a> | 
+            <a href="/forgot-password">Forgot Password</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

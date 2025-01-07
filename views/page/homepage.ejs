@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App Homepage</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- <p style="margin-bottom: 20px;"><%= JSON.stringify(user) %> </p> -->
+    <div class="homepage">
+        <div class="container">
+            <header>
+                <a href="/about_us" id="logout-btn">about us</a>
+                <% if(user){ %>
+                    <a href="/Logout" id="logout-btn">Logout</a>
+                <% } else { %>
+                    <a href="/signup" id="logout-btn">sing up</a>
+                    <a href="/signin" id="logout-btn">sing in</a>
+                <% } %>
+            </header>
+            <main>
+                <h2>Welcome <span><%= user ? user.fullname : 'Guest' %></span> to My App</h2>
+                <p>This is a simple homepage with a logout button.</p>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>Feature 1</h3>
+                        <p>This is a brief description of Feature 1. You can add more details here.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Feature 2</h3>
+                        <p>This is a brief description of Feature 2. You can add more details here.</p>
+                    </div>
+                </div>
+            </main>
+            
+            <footer>
+                <p>&copy; 2025 My App. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+
