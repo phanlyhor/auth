@@ -1,6 +1,9 @@
 const connectionDB = require('../config/db')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+require('dotenv').config();
+const nodemailer = require('nodemailer');
+
 
 const homepage = (req, res) => {
     // Check if the user is authenticated (has a token)
@@ -78,6 +81,38 @@ const logout = (req, res) => {
     res.redirect('/signin')
 };
 
+const reset_password = async (req, res) => {
+    const { email } = req.body;
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'phanlyhor369@gmail.com', // Your email address
+            pass: 'fjyr dpje wpze xuiv',   // Your app password
+        },
+    });
+
+    const resetLink = `http://localhost:3000/reset-password?email=${email}`; // Generate the reset link
+
+    const mailOptions = {
+        from: '"Your Name" <phanlyhor369@gmail.com>', // Replace "Your Name" with your desired sender name
+        to: email,
+        subject: 'Password Reset Request',
+        text: `You requested a password reset. Click the link below to reset your password:\n\n${resetLink}`,
+        html: `<p>You requested a password reset. Click the link below to reset your password:</p>
+               <a href="${resetLink}">${resetLink}</a>`,
+    };
+
+    try {
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Message sent: %s', info.messageId);
+        res.send('Email sent successfully. Please check your inbox.');
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).send('Failed to send email. Please try again later.');
+    }
+};
+
 module.exports = {
     homepage,
     about_us,
@@ -86,5 +121,6 @@ module.exports = {
     signin,
     post_singin,
     forgot_password,
-    logout
+    logout,
+    reset_password
 }

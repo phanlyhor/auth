@@ -10,10 +10,10 @@
 <body class="forgot-password">
     <div class="container">
         <h1>Forgot Password</h1>
-        <form id="forgot-password-form">
-            <input type="email" id="email" placeholder="Email" required>
+        <form id="forgot-password-form" method="post" action="/reset-password">
+            <input type="email" name="email" id="email" placeholder="Email" required>
             <button type="submit">Reset Password</button>
-        </form>
+        </form>        
         <div class="links">
             <a href="/signin">Back to Sign In</a>
         </div>

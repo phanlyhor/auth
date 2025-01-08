@@ -15,6 +15,7 @@ router.get('/signin', authController.signin);
 router.post('/signin', authController.post_singin);
 
 router.get('/forgot-password', authController.forgot_password);
+router.post('/reset-password', authController.reset_password)
 
 router.get('/Logout', authController.logout);
 
